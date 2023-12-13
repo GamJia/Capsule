@@ -10,10 +10,22 @@ public class Claw : MonoBehaviour
     [SerializeField] private Text capsuleText;
     private GameObject currentCapsule;
     private Animator clawAnimator;
+    
+    public static Claw Instance => instance;
+    private static Claw instance;
+
+    private void Awake() 
+    {
+        if (null == instance)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
-        clawAnimator=transform.GetComponent<Animator>();         
+        clawAnimator=transform.GetComponent<Animator>();  
+        Init();
         Create();
     }
     void Update()
@@ -29,23 +41,33 @@ public class Claw : MonoBehaviour
         }
     }
 
-    void Create()
+    void Init()
     {
-        int currentIndex=2-capsuleList.Count;
-        for(int i=0;i<currentIndex;i++)
-        {
-            int randomIndex = Random.Range(0, 5);
-            capsuleList.Add(capsule.transform.GetChild(randomIndex).gameObject);
-        }
+        int randomIndex = Random.Range(0, 5);
+        capsuleList.Add(capsule.transform.GetChild(randomIndex).gameObject); 
 
         clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
 
         Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
         currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
         currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
+    }
 
+    void Create()
+    { 
+        int randomIndex = Random.Range(0, 5);
+        capsuleList.Add(capsule.transform.GetChild(randomIndex).gameObject);
         capsuleText.text = capsuleList[1].GetComponent<Capsule>().capsuleData.CapsuleName;
         
+    }
+
+    public void Generate()
+    {
+        clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
+
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
+        currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
+        currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
     }
     
     void Drag()
@@ -68,7 +90,11 @@ public class Claw : MonoBehaviour
         {
             currentCapsule.GetComponent<Rigidbody2D>().isKinematic = false;
         }
+
+        
         capsuleList.RemoveAt(0);
         Create();
     }
+
+    
 }

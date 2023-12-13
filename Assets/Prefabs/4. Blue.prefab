@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3423975429916468752}
   - component: {fileID: 653551647878295313}
-  - component: {fileID: 6529359814885681613}
-  - component: {fileID: 6800801442793169051}
+  - component: {fileID: 5802375555770782288}
+  - component: {fileID: -1732499213593262068}
   - component: {fileID: 1506484649837276806}
   - component: {fileID: 5595468618834129319}
   m_Layer: 0
@@ -88,8 +88,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6529359814885681613
-CircleCollider2D:
+--- !u!70 &5802375555770782288
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -102,9 +102,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.9
---- !u!50 &6800801442793169051
+  m_Size: {x: 1.8, y: 1.8}
+  m_Direction: 1
+--- !u!50 &-1732499213593262068
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -119,9 +119,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 5
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
