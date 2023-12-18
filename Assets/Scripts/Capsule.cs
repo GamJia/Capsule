@@ -5,23 +5,35 @@ using UnityEngine;
 public class Capsule : MonoBehaviour
 {
     public CapsuleData capsuleData;
-    private bool isDropped=false;
+    public bool isMerged=false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Capsule otherCapsule = other.gameObject.GetComponent<Capsule>();
-
-        if(!isDropped)
+        if(capsuleData.CapsuleLevel<10)
         {
-            Claw.Instance.Generate();
-            isDropped=true;
+            var otherCapsule = other.gameObject.GetComponent<Capsule>();
+
+            if(!otherCapsule)
+            {
+                return;
+            }
+
+            if(otherCapsule.isMerged)
+            {
+                return;
+            }
+
+            if (!otherCapsule.capsuleData.CapsuleLevel.Equals(capsuleData.CapsuleLevel)&&!isMerged)
+            {
+                return;
+            }
+
+            Claw.Instance.Merge(this,otherCapsule);
+            isMerged=true;
         }
 
-        if (otherCapsule != null && otherCapsule.capsuleData.CapsuleLevel.Equals(capsuleData.CapsuleLevel))
-        {
-            Destroy(gameObject);
-        }
+        
     }
-    
+
     
 }

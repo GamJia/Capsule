@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class Claw : MonoBehaviour
 {
+    [SerializeField] private CapsuleStorage capsuleStorage;
     [SerializeField] private List<GameObject> capsuleList;
-    [SerializeField] private GameObject capsule;
     [SerializeField] private Text capsuleText;
-    private GameObject currentCapsule;
+    [SerializeField] private Image capsuleSprite;
     private Animator clawAnimator;
     
     public static Claw Instance => instance;
@@ -25,7 +25,7 @@ public class Claw : MonoBehaviour
     void Start()
     {
         clawAnimator=transform.GetComponent<Animator>();  
-        Init();
+        //Init();
         Create();
     }
     void Update()
@@ -39,62 +39,83 @@ public class Claw : MonoBehaviour
         {
             Drop();
         }
+
+        if(capsuleList.Count>1)
+        {
+            capsuleSprite.sprite = capsuleList[0].GetComponent<SpriteRenderer>().sprite;
+            float spriteWidth = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.width;
+            float spriteHeight = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.height;
+            float targetScale = 0.01f;
+            capsuleSprite.rectTransform.sizeDelta = new Vector2(spriteWidth * targetScale, spriteHeight * targetScale);
+
+            clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
+            capsuleText.text = capsuleList[1].GetComponent<Capsule>().capsuleData.CapsuleName;
+        }
     }
 
-    void Init()
-    {
-        int randomIndex = Random.Range(0, 5);
-        capsuleList.Add(capsule.transform.GetChild(randomIndex).gameObject); 
 
-        clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
 
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
-        currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
-        currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
-    }
+    // void Init()
+    // {
+    //     int randomIndex = Random.Range(0, 5);
+    //     capsuleList.Add(capsuleStorage.GetCapsule((CapsuleID)Random.Range(0, 5)));
+
+    //     clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
+
+    //     Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
+    //     currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
+    //     currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
+    // }
 
     void Create()
     { 
-        int randomIndex = Random.Range(0, 5);
-        capsuleList.Add(capsule.transform.GetChild(randomIndex).gameObject);
-        capsuleText.text = capsuleList[1].GetComponent<Capsule>().capsuleData.CapsuleName;
+        int currentIndex=2-capsuleList.Count;
+
+        for(int i=0;i<currentIndex;i++)
+        {
+            capsuleList.Add(capsuleStorage.GetCapsule((CapsuleID)Random.Range(0, 5)));
+        }
+        
         
     }
 
-    public void Generate()
-    {
-        clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
+    // public void Generate()
+    // {
+    //     clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
 
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
-        currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
-        currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
-    }
+    //     Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
+    //     currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
+    //     currentCapsule.GetComponent<Rigidbody2D>().isKinematic = true;
+    // }
     
     void Drag()
     {
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, -3.1f, 3.1f);
+        float clampedX = Mathf.Clamp(currentMousePosition.x, -3.5f, 3.5f);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
-
-        if(currentCapsule!=null)
-        {
-            currentCapsule.transform.position=new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
-        }
         
     }
 
     void Drop()
     {
-        //clawAnimator.SetTrigger("Dropped");
-        if(currentCapsule!=null)
-        {
-            currentCapsule.GetComponent<Rigidbody2D>().isKinematic = false;
-        }
-
+        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
+        GameObject currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
         
         capsuleList.RemoveAt(0);
         Create();
     }
+
+    public void Merge(Capsule first, Capsule second)
+    {
+        int nextLevel = first.capsuleData.CapsuleLevel + 1;
+        GameObject nextCapsulePrefab = capsuleStorage.GetCapsule((CapsuleID)nextLevel);
+        Vector3 mergePosition = (first.transform.position + second.transform.position) / 2f;
+        Instantiate(nextCapsulePrefab, mergePosition, Quaternion.identity);
+
+        Destroy(first.gameObject);
+        Destroy(second.gameObject);
+    }
+
 
     
 }
