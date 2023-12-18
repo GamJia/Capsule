@@ -9,6 +9,7 @@ public class Claw : MonoBehaviour
     [SerializeField] private List<GameObject> capsuleList;
     [SerializeField] private Text capsuleText;
     [SerializeField] private Image capsuleSprite;
+    [SerializeField] private GameObject guide;
     private Animator clawAnimator;
     
     public static Claw Instance => instance;
@@ -27,6 +28,7 @@ public class Claw : MonoBehaviour
         clawAnimator=transform.GetComponent<Animator>();  
         //Init();
         Create();
+        
     }
     void Update()
     {
@@ -93,6 +95,8 @@ public class Claw : MonoBehaviour
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float clampedX = Mathf.Clamp(currentMousePosition.x, -3.5f, 3.5f);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+
+        guide.SetActive(true);
         
     }
 
@@ -100,7 +104,11 @@ public class Claw : MonoBehaviour
     {
         Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
         GameObject currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
-        
+
+        AudioManager.Instance.PlaySFX(AudioID.Drop);        
+
+        guide.SetActive(false);
+
         capsuleList.RemoveAt(0);
         Create();
     }
@@ -111,6 +119,8 @@ public class Claw : MonoBehaviour
         GameObject nextCapsulePrefab = capsuleStorage.GetCapsule((CapsuleID)nextLevel);
         Vector3 mergePosition = (first.transform.position + second.transform.position) / 2f;
         Instantiate(nextCapsulePrefab, mergePosition, Quaternion.identity);
+        
+        AudioManager.Instance.PlaySFX(AudioID.Merge);
 
         Destroy(first.gameObject);
         Destroy(second.gameObject);
