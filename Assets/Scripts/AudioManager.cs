@@ -26,6 +26,13 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioID id)
     {
+        if (_sfx.isPlaying)
+        {
+            // If it's playing, stop it before playing the new sound
+            _sfx.Stop();
+        }
+
+        // Play the new sound
         _sfx.PlayOneShot(_audioStorage.GetAudio(id));
     }
 
