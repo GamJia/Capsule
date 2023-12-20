@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance => instance;
     private static UIManager instance;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text highScoreText;
     private int score;
     void Awake()
     {
@@ -16,8 +17,10 @@ public class UIManager : MonoBehaviour
         }
     }
     
-    void Start() {
+    void Start()
+    {
         score=0;
+        UpdateScore();
     }
 
     public void CalculateScore(int plusScore)
@@ -32,6 +35,33 @@ public class UIManager : MonoBehaviour
         else
         {
             scoreText.text = score.ToString();
+        }
+    }
+
+    public void UpdateScore()
+    {
+        if(PlayerPrefs.HasKey("HighScore"))
+        {
+            if(score>PlayerPrefs.GetInt("HighScore"))
+            {
+                PlayerPrefs.SetInt("HighScore",score);
+            }
+        }
+
+        else
+        {
+            PlayerPrefs.SetInt("HighScore",score);
+        }
+
+        if(PlayerPrefs.GetInt("HighScore")<100)
+        {
+            string scoreFormat=PlayerPrefs.GetInt("HighScore").ToString("D3");
+            highScoreText.text=scoreFormat;
+        }
+
+        else
+        {
+            highScoreText.text=PlayerPrefs.GetInt("HighScore").ToString();
         }
     }
 }

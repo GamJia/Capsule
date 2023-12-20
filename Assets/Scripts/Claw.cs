@@ -11,6 +11,7 @@ public class Claw : MonoBehaviour
     [SerializeField] private Text capsuleText;
     [SerializeField] private GameObject guide;
     [SerializeField] private GameObject currentCapsule;
+    [SerializeField] private Transform capsule;
     private Animator clawAnimator;
     public bool isDragAvailable;
     
@@ -53,7 +54,7 @@ public class Claw : MonoBehaviour
                 currentCapsule.transform.GetComponent<Image>().sprite = capsuleList[0].GetComponent<SpriteRenderer>().sprite;
                 float spriteWidth = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.width;
                 float spriteHeight = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.height;
-                float targetScale = 0.01f;
+                float targetScale = 0.01125f;
                 currentCapsule.transform.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(spriteWidth * targetScale, spriteHeight * targetScale);
 
                 clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
@@ -83,7 +84,7 @@ public class Claw : MonoBehaviour
     void Drag()
     {
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, -3.7f, 3.7f);
+        float clampedX = Mathf.Clamp(currentMousePosition.x, -3.6f, 3.6f);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 
         guide.SetActive(true);
@@ -93,7 +94,7 @@ public class Claw : MonoBehaviour
     void Drop()
     {
         Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
-        GameObject currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity);
+        GameObject currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity,capsule);
 
         AudioManager.Instance.PlaySFX(AudioID.Drop);        
 
@@ -109,8 +110,8 @@ public class Claw : MonoBehaviour
         int nextLevel = first.capsuleData.CapsuleLevel + 1;
         GameObject nextCapsule = capsuleStorage.GetCapsule((CapsuleID)nextLevel);
         Vector3 mergePosition = (first.transform.position + second.transform.position) / 2f;
-        Instantiate(nextCapsule, mergePosition, Quaternion.identity);
-        nextCapsule.GetComponent<Animator>().enabled=true;
+        Instantiate(nextCapsule, mergePosition, Quaternion.identity,capsule);
+        nextCapsule.GetComponent<Animator>().SetTrigger("isMerged");
         
         AudioManager.Instance.PlaySFX(AudioID.Merge);
 
