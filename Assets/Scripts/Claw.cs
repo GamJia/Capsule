@@ -62,10 +62,6 @@ public class Claw : MonoBehaviour
             }
         }
 
-        else
-        {
-            currentCapsule.SetActive(false);
-        }
     }
 
 

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     private static UIManager instance;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text highScoreText;
+    [SerializeField] private GameObject option;
     private int score;
     void Awake()
     {
@@ -63,5 +64,17 @@ public class UIManager : MonoBehaviour
         {
             highScoreText.text=PlayerPrefs.GetInt("HighScore").ToString();
         }
+    }
+
+    public void TurnOnOption()
+    {
+        option.GetComponent<Animator>().SetTrigger("TurnOn");
+        Claw.Instance.isDragAvailable=false;
+    }
+
+    public void TurnOffOption()
+    {
+        option.GetComponent<Animator>().SetTrigger("TurnOff");
+        Claw.Instance.isDragAvailable=true;
     }
 }
