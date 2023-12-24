@@ -6,7 +6,6 @@ public class Glass : MonoBehaviour
 {
     private RectTransform rectTransform;
     private float initialTop = 60f;
-    private float topIncreasePerRatio = 60f;
 
     void Start()
     {

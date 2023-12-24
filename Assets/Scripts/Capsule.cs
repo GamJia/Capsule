@@ -8,16 +8,13 @@ public class Capsule : MonoBehaviour
     public bool isMerged=false;
     private bool isHit=false;
 
-    void Start() 
-    {
-        UIManager.Instance.CalculateScore(capsuleData.CapsuleLevel+1);
-    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(!isHit)
+        if(!isHit&&other.gameObject.layer.Equals(0))
         {
             Claw.Instance.isDragAvailable=true;
+            UIManager.Instance.CalculateScore(capsuleData.CapsuleLevel+1);
             isHit=true;
         }
 
@@ -30,15 +27,11 @@ public class Capsule : MonoBehaviour
                 return;
             }
 
-            if(isMerged)
+            if(isMerged||otherCapsule.isMerged)
             {
                 return;
             }
 
-            if(otherCapsule.isMerged)
-            {
-                return;
-            }
 
             if (!otherCapsule.capsuleData.CapsuleLevel.Equals(capsuleData.CapsuleLevel))
             {
@@ -48,7 +41,6 @@ public class Capsule : MonoBehaviour
             Claw.Instance.Merge(this,otherCapsule);
             isMerged=true;
         }
-
         
     }
 

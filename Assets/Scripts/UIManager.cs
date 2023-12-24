@@ -69,12 +69,10 @@ public class UIManager : MonoBehaviour
     public void TurnOnOption()
     {
         option.GetComponent<Animator>().SetTrigger("TurnOn");
-        Claw.Instance.isDragAvailable=false;
     }
 
     public void TurnOffOption()
     {
         option.GetComponent<Animator>().SetTrigger("TurnOff");
-        Claw.Instance.isDragAvailable=true;
     }
 }

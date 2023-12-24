@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
+using UnityEngine.EventSystems;
 
 public class Claw : MonoBehaviour
 {
@@ -11,7 +12,10 @@ public class Claw : MonoBehaviour
     [SerializeField] private Text capsuleText;
     [SerializeField] private GameObject guide;
     [SerializeField] private GameObject currentCapsule;
-    [SerializeField] private Transform capsule;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform capsuleGroup;
+    [SerializeField] private GameObject optionUI;
+
     private Animator clawAnimator;
     public bool isDragAvailable;
     
@@ -28,15 +32,15 @@ public class Claw : MonoBehaviour
 
     void Start()
     {
+        Create();
+
         isDragAvailable=true;
         clawAnimator=transform.GetComponent<Animator>();  
-
-        Create();
         
     }
     void Update()
     {
-        if(isDragAvailable)
+        if(isDragAvailable&&!optionUI.activeSelf)
         {
             if (Input.GetMouseButton(0))
             {
@@ -48,19 +52,20 @@ public class Claw : MonoBehaviour
                 Drop();
             }
 
-            if(capsuleList.Count>1)
+            if(!currentCapsule)
             {
-                currentCapsule.SetActive(true);
-                currentCapsule.transform.GetComponent<Image>().sprite = capsuleList[0].GetComponent<SpriteRenderer>().sprite;
-                float spriteWidth = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.width;
-                float spriteHeight = capsuleList[0].GetComponent<SpriteRenderer>().sprite.rect.height;
-                float targetScale = 0.01125f;
-                currentCapsule.transform.GetComponent<Image>().rectTransform.sizeDelta = new Vector2(spriteWidth * targetScale, spriteHeight * targetScale);
+                currentCapsule=Instantiate(capsuleList[0],spawnPoint.position,Quaternion.identity,capsuleGroup);
+                currentCapsule.transform.GetComponent<Collider2D>().enabled=false;
+                currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=true;
+                
 
                 clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
                 capsuleText.text = capsuleList[1].GetComponent<Capsule>().capsuleData.CapsuleName;
             }
+
         }
+
+        currentCapsule.SetActive(isDragAvailable);
 
     }
 
@@ -74,31 +79,64 @@ public class Claw : MonoBehaviour
             capsuleList.Add(capsuleStorage.GetCapsule((CapsuleID)Random.Range(0, 5)));
         }
         
-        
     }
 
     void Drag()
     {
-        Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, -3.6f, 3.6f);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        if(CheckMouseYPosition())
+        {
+            Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            float clampedX = Mathf.Clamp(currentMousePosition.x, -4.3f,4.3f);
+            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 
-        guide.SetActive(true);
+            if(currentCapsule)
+            {
+                currentCapsule.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
+            }
+
+            guide.SetActive(true);
+        }
+        
+        
+        
+    }
+
+    bool CheckMouseYPosition()
+    {
+        float ratioInt=(float)Screen.height/13;
+
+        if(Input.mousePosition.y < (float)Screen.height-ratioInt)
+        {
+            return true;
+        }
+
+        else
+        {
+            return false;
+        }
         
     }
 
     void Drop()
     {
-        Vector3 spawnPoint = new Vector3(transform.position.x, transform.position.y - 1.84f, transform.position.z);
-        GameObject currentCapsule = Instantiate(capsuleList[0], spawnPoint, Quaternion.identity,capsule);
+        if(CheckMouseYPosition())
+        {
+            AudioManager.Instance.PlaySFX(AudioID.Drop);        
 
-        AudioManager.Instance.PlaySFX(AudioID.Drop);        
+            guide.SetActive(false);
 
-        guide.SetActive(false);
+            currentCapsule.transform.SetParent(capsuleGroup);
+            currentCapsule.transform.GetComponent<Collider2D>().enabled=true;
+            currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=false;
 
-        capsuleList.RemoveAt(0);
-        isDragAvailable=false;
-        Create();
+            currentCapsule=null;
+
+            capsuleList.RemoveAt(0);
+            isDragAvailable=false;
+
+            Create();
+        }
+        
     }
 
     public void Merge(Capsule first, Capsule second)
@@ -106,8 +144,7 @@ public class Claw : MonoBehaviour
         int nextLevel = first.capsuleData.CapsuleLevel + 1;
         GameObject nextCapsule = capsuleStorage.GetCapsule((CapsuleID)nextLevel);
         Vector3 mergePosition = (first.transform.position + second.transform.position) / 2f;
-        Instantiate(nextCapsule, mergePosition, Quaternion.identity,capsule);
-        nextCapsule.GetComponent<Animator>().SetTrigger("isMerged");
+        Instantiate(nextCapsule, mergePosition, Quaternion.identity,capsuleGroup);
         
         AudioManager.Instance.PlaySFX(AudioID.Merge);
 
