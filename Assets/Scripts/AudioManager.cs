@@ -12,9 +12,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource _bgm;
     [SerializeField] AudioSource _sfx;
 
-    [SerializeField] AudioMixer _audioMixer;
-    [SerializeField] Slider _bgmSlider;
-    [SerializeField] Slider _sfxSlider;
 
     private void Awake()
     {
@@ -42,14 +39,5 @@ public class AudioManager : MonoBehaviour
         _sfx.PlayOneShot(_audioStorage.GetAudio(id));
     }
 
-    public void SetBGM()
-    {
-        _audioMixer.SetFloat("BGM Volume", _bgmSlider.value);
-    }
-
-    public void SetSFX()
-    {
-        _audioMixer.SetFloat("SFX Volume", _sfxSlider.value);
-    }
 
 }
