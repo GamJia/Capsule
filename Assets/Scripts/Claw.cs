@@ -40,7 +40,12 @@ public class Claw : MonoBehaviour
     }
     void Update()
     {
-        if(isDragAvailable&&!optionUI.activeSelf)
+        if(EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
+        if(isDragAvailable)
         {
             if (Input.GetMouseButton(0))
             {
@@ -83,59 +88,38 @@ public class Claw : MonoBehaviour
 
     void Drag()
     {
-        if(CheckMouseYPosition())
+        Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        float clampedX = Mathf.Clamp(currentMousePosition.x, -4.3f,4.3f);
+        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+
+        if(currentCapsule)
         {
-            Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float clampedX = Mathf.Clamp(currentMousePosition.x, -4.3f,4.3f);
-            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
-
-            if(currentCapsule)
-            {
-                currentCapsule.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-            }
-
-            guide.SetActive(true);
+            currentCapsule.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
         }
-        
+
+        guide.SetActive(true);
+    
         
         
     }
 
-    bool CheckMouseYPosition()
-    {
-        float ratioInt=(float)Screen.height/13;
-
-        if(Input.mousePosition.y < (float)Screen.height-ratioInt)
-        {
-            return true;
-        }
-
-        else
-        {
-            return false;
-        }
-        
-    }
 
     void Drop()
     {
-        if(CheckMouseYPosition())
-        {
-            AudioManager.Instance.PlaySFX(AudioID.Drop);        
+        AudioManager.Instance.PlaySFX(AudioID.Drop);        
 
-            guide.SetActive(false);
+        guide.SetActive(false);
 
-            currentCapsule.transform.SetParent(capsuleGroup);
-            currentCapsule.transform.GetComponent<Collider2D>().enabled=true;
-            currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=false;
+        currentCapsule.transform.SetParent(capsuleGroup);
+        currentCapsule.transform.GetComponent<Collider2D>().enabled=true;
+        currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=false;
 
-            currentCapsule=null;
+        currentCapsule=null;
 
-            capsuleList.RemoveAt(0);
-            isDragAvailable=false;
+        capsuleList.RemoveAt(0);
+        isDragAvailable=false;
 
-            Create();
-        }
+        Create();
         
     }
 

@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioStorage _audioStorage;
     [SerializeField] AudioSource _bgm;
     [SerializeField] AudioSource _sfx;
+    [SerializeField] AudioMixer _audioMixer;
 
 
     private void Awake()
@@ -37,6 +38,21 @@ public class AudioManager : MonoBehaviour
 
         // Play the new sound
         _sfx.PlayOneShot(_audioStorage.GetAudio(id));
+    }
+
+
+    public void ChangeVolume(Toggle toggle)
+    {
+        if(toggle.isOn)
+        {
+            _audioMixer.SetFloat("Master Volume", -80);
+        }
+
+        else
+        {
+            _audioMixer.SetFloat("Master Volume", 1);
+        }
+        
     }
 
 

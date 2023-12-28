@@ -1,0 +1,1357 @@
+fileFormatVersion: 2
+guid: 39d8ad521e3531842b70e2f3665503de
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16.67
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CapsuleAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1272
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ad7421b369a78742a801a75ffcdc585
+      internalID: -863055833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1272
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 371f7a8c94f9e9445b672726b733d2c7
+      internalID: -1628281748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 1272
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dda83facf2c90a4dab485636522d744
+      internalID: -1621013173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 1272
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84479d292c75e34408a07b5cc2c0e9c8
+      internalID: 1379599446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1272
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a466c555344dcb4cb3eedef464e2974
+      internalID: -650089083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1266
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348331bd0c599d1448a06ecb56f571a8
+      internalID: 1519980566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 1266
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5e6bc9c43453248be42f064b754724
+      internalID: -131501215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 1266
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd1036673dcc72d4ca866a6fcc6954a4
+      internalID: -1162519952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 1266
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ebaea7d9fcb1c458ef65665f6c949d
+      internalID: -1739707778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 1266
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864b93007b2af754ea14f51c0e38b244
+      internalID: 1469887065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1252
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1b985e5252d1d846991f39b50b916ac
+      internalID: -1640398289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1252
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d87033bbd626222488f880119557448d
+      internalID: 1357587477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1252
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 574f654ab39b25047a3d7a1ce13820f8
+      internalID: -1375212865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 1252
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1457cfdde3dd124680e7ab6cf37f5d9
+      internalID: -133798835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 1252
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e37d19e2aaf7f9448d17744be16e7d2
+      internalID: -1305381584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 1234
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67984b0e5ae19854a86081c50eaae890
+      internalID: 889099761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 1234
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ff659ace72a0c4b843a32761361ee0
+      internalID: -26187040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 1234
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd1b95321852be449978c2b168979b3c
+      internalID: -1524176106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_18
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1234
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38e010bb41177f439f861281f5439b2
+      internalID: 2036141593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_19
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 1234
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae9ff48a4c3ca041a3d4aafc5230c82
+      internalID: -1232190149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1155
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daf551a1393e2364092bec89bbdae97e
+      internalID: 212592673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_21
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1155
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9e059956d544134e8e3786e622495fe
+      internalID: -1543877804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_22
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 1155
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fb5aabf966b88d439d416d3ab1888ad
+      internalID: 1624886639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_23
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 1155
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a811dee660bbc194892ea143d363bff8
+      internalID: 1333301377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_24
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 1155
+        width: 76
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d704fc0498aa0144b894a74602bd80e
+      internalID: -718890595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_25
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 1114
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe74e9b0e49884342a4aaf905db2b72d
+      internalID: -370788742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_26
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 1114
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbc496055cacfbc469623f8553e2ba01
+      internalID: 57972477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_27
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 1114
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea19020bd4beef14bb288b38f34aeb58
+      internalID: 625701035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_28
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 1114
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5735cd65a191070418d60cff91559102
+      internalID: 221985935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_29
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1114
+        width: 117
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb900a3cd97981e44bb224e846f7ac19
+      internalID: -1076751202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 961
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd90288e4a40aa84f834a496147c8314
+      internalID: -1034900363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_31
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 961
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7e3f3f25d204947870e8b2134632d6
+      internalID: 1504462179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_32
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 961
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcc8a160031b54c4ea6805276778c4f8
+      internalID: -877915697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_33
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 961
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95983f2187c75f241b3c8866f84048ee
+      internalID: 1116492999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_34
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 961
+        width: 150
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bf17e0f160a6e145b320d8685f0154d
+      internalID: 1093328093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_35
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 773
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1424257d3b91184d9412ad4be8db9c9
+      internalID: -903235311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_36
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 773
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144cebb5f31093f4b8c37e58d1bde903
+      internalID: -242765744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_37
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 773
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dca64441c0a45f449ce20e03beb4395
+      internalID: -1357356473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_38
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 773
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20b28ef4bf53e3d4e96dacde00243497
+      internalID: 929062231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_39
+      rect:
+        serializedVersion: 2
+        x: 754
+        y: 773
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ba3a7559fa5a4b4e9c0e45e84ed9fe8
+      internalID: -544892566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 562
+        width: 208
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3edd73f9e4c354eba7cea5b0b48d2e
+      internalID: 834866924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_41
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 562
+        width: 208
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b740eed188c67240a4fe227c2282552
+      internalID: 296015579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_42
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 562
+        width: 209
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a34784298e69e44bd235e04a6f22e5
+      internalID: -670626151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_43
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 562
+        width: 208
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f85608b8c014115408696a14a60482d4
+      internalID: -63404723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_44
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 562
+        width: 208
+        height: 208
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 967989d09c24b2c4684678eee457e43a
+      internalID: 1281759660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_45
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 326
+        width: 233
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02547a6a85aa547468eb6abc5c49683c
+      internalID: -893425597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_46
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 326
+        width: 233
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b65940f8903e443b2fdfc196399ffc
+      internalID: 187504510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_47
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 326
+        width: 233
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c0b2ab2054f8954c89e542f9c8f8fd1
+      internalID: -971990144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_48
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 326
+        width: 233
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b78e7ed2a4660478287b7bd0003871
+      internalID: 1870219327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_49
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 326
+        width: 233
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e7eca0affe381445b458c6c250d63d0
+      internalID: 100885637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_50
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 42
+        width: 281
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9051d4ea1a61bbc4d9cf68629982287c
+      internalID: 1779090972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_51
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 42
+        width: 281
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1af7c998ea2e34b47ba18ce0801ffea6
+      internalID: 1858914776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_52
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 42
+        width: 281
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65271725b94e36641a6ed3468b96b34f
+      internalID: -1421961704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_53
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 42
+        width: 281
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f1981817d392c748bafa7aefbe58391
+      internalID: -57277727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CapsuleAnimation_54
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 42
+        width: 281
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9888036aa4f1407449cbb939559a97c1
+      internalID: -965383890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CapsuleAnimation_0: -863055833
+      CapsuleAnimation_1: -1628281748
+      CapsuleAnimation_10: -1640398289
+      CapsuleAnimation_11: 1357587477
+      CapsuleAnimation_12: -1375212865
+      CapsuleAnimation_13: -133798835
+      CapsuleAnimation_14: -1305381584
+      CapsuleAnimation_15: 889099761
+      CapsuleAnimation_16: -26187040
+      CapsuleAnimation_17: -1524176106
+      CapsuleAnimation_18: 2036141593
+      CapsuleAnimation_19: -1232190149
+      CapsuleAnimation_2: -1621013173
+      CapsuleAnimation_20: 212592673
+      CapsuleAnimation_21: -1543877804
+      CapsuleAnimation_22: 1624886639
+      CapsuleAnimation_23: 1333301377
+      CapsuleAnimation_24: -718890595
+      CapsuleAnimation_25: -370788742
+      CapsuleAnimation_26: 57972477
+      CapsuleAnimation_27: 625701035
+      CapsuleAnimation_28: 221985935
+      CapsuleAnimation_29: -1076751202
+      CapsuleAnimation_3: 1379599446
+      CapsuleAnimation_30: -1034900363
+      CapsuleAnimation_31: 1504462179
+      CapsuleAnimation_32: -877915697
+      CapsuleAnimation_33: 1116492999
+      CapsuleAnimation_34: 1093328093
+      CapsuleAnimation_35: -903235311
+      CapsuleAnimation_36: -242765744
+      CapsuleAnimation_37: -1357356473
+      CapsuleAnimation_38: 929062231
+      CapsuleAnimation_39: -544892566
+      CapsuleAnimation_4: -650089083
+      CapsuleAnimation_40: 834866924
+      CapsuleAnimation_41: 296015579
+      CapsuleAnimation_42: -670626151
+      CapsuleAnimation_43: -63404723
+      CapsuleAnimation_44: 1281759660
+      CapsuleAnimation_45: -893425597
+      CapsuleAnimation_46: 187504510
+      CapsuleAnimation_47: -971990144
+      CapsuleAnimation_48: 1870219327
+      CapsuleAnimation_49: 100885637
+      CapsuleAnimation_5: 1519980566
+      CapsuleAnimation_50: 1779090972
+      CapsuleAnimation_51: 1858914776
+      CapsuleAnimation_52: -1421961704
+      CapsuleAnimation_53: -57277727
+      CapsuleAnimation_54: -965383890
+      CapsuleAnimation_6: -131501215
+      CapsuleAnimation_7: -1162519952
+      CapsuleAnimation_8: -1739707778
+      CapsuleAnimation_9: 1469887065
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

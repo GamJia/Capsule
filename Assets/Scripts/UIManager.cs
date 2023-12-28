@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Networking; 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance => instance;
     private static UIManager instance;
     [SerializeField] private Text scoreText;
     [SerializeField] private Text highScoreText;
-    [SerializeField] private GameObject option;
+    [SerializeField] private GameObject setting;
+    [SerializeField] private GameObject AudioManager;
+    
     private int score;
     void Awake()
     {
@@ -65,14 +69,45 @@ public class UIManager : MonoBehaviour
             highScoreText.text=PlayerPrefs.GetInt("HighScore").ToString();
         }
     }
-
-    public void TurnOnOption()
+    public void ChangeOption(Toggle toggle)
     {
-        option.GetComponent<Animator>().SetTrigger("Option_On");
+        if(toggle.isOn)
+        {
+            setting.GetComponent<Animator>().SetTrigger("Option_On");
+        }
+
+        else
+        {
+            setting.GetComponent<Animator>().SetTrigger("Option_Off");
+        }
     }
 
-    public void TurnOffOption()
+    public void RestartGame()
     {
-        option.GetComponent<Animator>().SetTrigger("Option_Off");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void RateGame()
+    {
+        Application.OpenURL("https://gamjia.tistory.com/");
+    }
+    public void ShareGame()
+    {
+        StartCoroutine(ShareCoroutine());
+    }
+    private IEnumerator ShareCoroutine()
+    {
+        string encodedShareText = UnityWebRequest.EscapeURL("Gacha fun in every capsule pop! Try our colorful game now! 🚀💖");
+
+        string shareURL = "https://gamjia.tistory.com/" + encodedShareText;
+
+        Application.OpenURL(shareURL);
+
+        yield return null;
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
+
 }
