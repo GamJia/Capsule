@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.UpdateScore();
-        StartCoroutine(GameOverAnimation());
+        //StartCoroutine(GameOverAnimation());
     }
 
     IEnumerator GameOverAnimation()

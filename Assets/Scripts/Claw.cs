@@ -88,8 +88,9 @@ public class Claw : MonoBehaviour
 
     void Drag()
     {
+        float limit=(float)Screen.width/310f; 
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, -4.3f,4.3f);
+        float clampedX = Mathf.Clamp(currentMousePosition.x, -limit,limit);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 
         if(currentCapsule)
