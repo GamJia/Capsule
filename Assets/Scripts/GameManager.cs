@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         UIManager.Instance.UpdateScore();
-        //StartCoroutine(GameOverAnimation());
+        Claw.Instance.isDragAvailable=false;
+        StartCoroutine(GameOverAnimation());
     }
 
     IEnumerator GameOverAnimation()

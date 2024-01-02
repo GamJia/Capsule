@@ -15,6 +15,8 @@ public class Claw : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform capsuleGroup;
     [SerializeField] private GameObject optionUI;
+    [SerializeField] private Transform left;
+    [SerializeField] private Transform right;
 
     private Animator clawAnimator;
     public bool isDragAvailable;
@@ -88,9 +90,8 @@ public class Claw : MonoBehaviour
 
     void Drag()
     {
-        float limit=(float)Screen.width/310f; 
         Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, -limit,limit);
+        float clampedX = Mathf.Clamp(currentMousePosition.x, left.position.x,right.position.x);
         transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
 
         if(currentCapsule)
