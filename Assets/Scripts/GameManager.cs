@@ -35,7 +35,6 @@ public class GameManager : MonoBehaviour
         }
 
         setting.GetComponent<Animator>().SetTrigger("Game_Over");
-
         
     }
     

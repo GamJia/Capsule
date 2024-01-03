@@ -30,11 +30,18 @@ public class GameOver : MonoBehaviour
             
             deadTime+=Time.deltaTime;
 
-            if(deadTime>2)
+            if(deadTime>0.5f)
             {
-                GameManager.Instance.GameOver();
-                GetComponent<Collider2D>().enabled = false;
+                currentCapsule.GetComponent<SpriteRenderer>().color = new Color(1f, 136f / 255f, 136f / 255f);
+
+                if(deadTime>2.5f)
+                {
+                    GameManager.Instance.GameOver();
+                    GetComponent<Collider2D>().enabled=false;
+                }
             }
+
+            
         }
     }
 
@@ -42,6 +49,7 @@ public class GameOver : MonoBehaviour
     {
         if(currentCapsule)
         {
+            currentCapsule.GetComponent<SpriteRenderer>().color = Color.white;
             currentCapsule=null;
             deadTime=0;
         }

@@ -47,7 +47,7 @@ public class Claw : MonoBehaviour
             return;
         }
 
-        if(isDragAvailable)
+        if(isDragAvailable&&!optionUI.activeSelf)
         {
             if (Input.GetMouseButton(0))
             {
