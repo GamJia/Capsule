@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance => instance;
     private static UIManager instance;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text finalScoreText;
     [SerializeField] private Text highScoreText;
     [SerializeField] private GameObject setting;
     [SerializeField] private GameObject AudioManager;
@@ -35,11 +36,13 @@ public class UIManager : MonoBehaviour
         {
             string scoreFormat = score.ToString("D3");
             scoreText.text = scoreFormat;
+            finalScoreText.text="Your Score\n"+scoreFormat;
         }
 
         else
         {
             scoreText.text = score.ToString();
+            finalScoreText.text="Your Score\n"+score.ToString();
         }
     }
 

@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance => instance;
     private static GameManager instance;
     [SerializeField] private GameObject capsuleGroup;
+    [SerializeField] private GameObject settingButton;
+    [SerializeField] private GameObject setting;
 
     
     void Awake()
@@ -25,11 +27,15 @@ public class GameManager : MonoBehaviour
 
     IEnumerator GameOverAnimation()
     {
+        settingButton.SetActive(false);
         for(int i=0;i<capsuleGroup.transform.childCount;i++)
         {
             capsuleGroup.transform.GetChild(i).GetComponent<Animator>().SetTrigger("isGameOver");
             yield return new WaitForSeconds(0.1f);
         }
+
+        setting.GetComponent<Animator>().SetTrigger("Game_Over");
+
         
     }
     
