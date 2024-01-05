@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking; 
+using System.IO;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance => instance;
@@ -15,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject AudioManager;
     
     private int score;
+    private bool isProcessing = false;
     void Awake()
     {
         if (null == instance)
@@ -91,22 +93,46 @@ public class UIManager : MonoBehaviour
     }
     public void RateGame()
     {
-        Application.OpenURL("https://gamjia.tistory.com/");
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.GamJia.Capsule&hl=en-KR");
     }
     public void ShareGame()
     {
-        StartCoroutine(ShareCoroutine());
+        StartCoroutine(TakeScreenshotAndShare());
     }
-    private IEnumerator ShareCoroutine()
+
+    private IEnumerator TakeScreenshotAndShare()
     {
-        string encodedShareText = UnityWebRequest.EscapeURL("Gacha fun in every capsule pop! Try our colorful game now! 🚀💖");
+        if(setting.activeSelf)
+        {
+            setting.SetActive(false);
+        }
 
-        string shareURL = "https://gamjia.tistory.com/" + encodedShareText;
+        yield return new WaitForEndOfFrame();
 
-        Application.OpenURL(shareURL);
+        Texture2D ss = new Texture2D( Screen.width, Screen.height, TextureFormat.RGB24, false );
+        ss.ReadPixels( new Rect( 0, 0, Screen.width, Screen.height ), 0, 0 );
+        ss.Apply();
 
-        yield return null;
+        string filePath = Path.Combine( Application.temporaryCachePath, "shared img.png" );
+        File.WriteAllBytes( filePath, ss.EncodeToPNG() );
+
+        // To avoid memory leaks
+        Destroy( ss );
+
+        new NativeShare().AddFile( filePath )
+            .SetSubject( "Play WaterMelon Game - Gold Capsule" ).SetText( "Gacha fun in every capsule pop! Try our colorful game now! 🚀💖" ).SetUrl( "https://play.google.com/store/apps/details?id=com.GamJia.Capsule&hl=en-KR" )
+            .SetCallback( ( result, shareTarget ) => Debug.Log( "Share result: " + result + ", selected app: " + shareTarget ) )
+            .Share();
+
+        // Share on WhatsApp only, if installed (Android only)
+        //if( NativeShare.TargetExists( "com.whatsapp" ) )
+        //	new NativeShare().AddFile( filePath ).AddTarget( "com.whatsapp" ).Share();
+        setting.SetActive(true);
     }
+
+
+
+
     public void ExitGame()
     {
         Application.Quit();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class GameOver : MonoBehaviour
 
             if(deadTime>0.5f)
             {
-                currentCapsule.GetComponent<SpriteRenderer>().color = new Color(1f, 136f / 255f, 136f / 255f);
+                currentCapsule.GetComponent<Image>().color = new Color(1f, 136f / 255f, 136f / 255f);
 
                 if(deadTime>2.5f)
                 {
@@ -49,7 +50,7 @@ public class GameOver : MonoBehaviour
     {
         if(currentCapsule)
         {
-            currentCapsule.GetComponent<SpriteRenderer>().color = Color.white;
+            currentCapsule.GetComponent<Image>().color = Color.white;
             currentCapsule=null;
             deadTime=0;
         }

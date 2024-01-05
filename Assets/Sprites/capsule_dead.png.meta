@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16.67
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -132,10 +132,10 @@ TextureImporter:
       name: capsule_dead_0
       rect:
         serializedVersion: 2
-        x: 30
-        y: 960
-        width: 72
-        height: 72
+        x: 5
+        y: 160
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: capsule_dead_1
       rect:
         serializedVersion: 2
-        x: 114
-        y: 936
-        width: 96
-        height: 96
+        x: 19
+        y: 156
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,10 +174,10 @@ TextureImporter:
       name: capsule_dead_2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 900
-        width: 132
-        height: 132
+        x: 37
+        y: 150
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: capsule_dead_3
       rect:
         serializedVersion: 2
-        x: 366
-        y: 876
-        width: 156
-        height: 156
+        x: 61
+        y: 146
+        width: 26
+        height: 26
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,10 +216,10 @@ TextureImporter:
       name: capsule_dead_4
       rect:
         serializedVersion: 2
-        x: 534
-        y: 852
-        width: 180
-        height: 180
+        x: 89
+        y: 142
+        width: 30
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,10 +237,10 @@ TextureImporter:
       name: capsule_dead_5
       rect:
         serializedVersion: 2
-        x: 726
-        y: 798
-        width: 234
-        height: 234
+        x: 121
+        y: 133
+        width: 39
+        height: 39
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,10 +258,10 @@ TextureImporter:
       name: capsule_dead_6
       rect:
         serializedVersion: 2
-        x: 972
-        y: 732
-        width: 300
-        height: 300
+        x: 162
+        y: 122
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: capsule_dead_7
       rect:
         serializedVersion: 2
-        x: 1290
-        y: 666
-        width: 366
-        height: 366
+        x: 215
+        y: 111
+        width: 61
+        height: 61
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,10 +300,10 @@ TextureImporter:
       name: capsule_dead_8
       rect:
         serializedVersion: 2
-        x: 96
-        y: 180
-        width: 432
-        height: 432
+        x: 16
+        y: 30
+        width: 72
+        height: 72
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -321,10 +321,10 @@ TextureImporter:
       name: capsule_dead_9
       rect:
         serializedVersion: 2
-        x: 600
-        y: 108
-        width: 504
-        height: 504
+        x: 100
+        y: 18
+        width: 84
+        height: 84
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -342,10 +342,10 @@ TextureImporter:
       name: capsule_dead_10
       rect:
         serializedVersion: 2
-        x: 1194
-        y: 48
-        width: 570
-        height: 570
+        x: 199
+        y: 8
+        width: 95
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
