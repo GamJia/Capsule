@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         for(int i=0;i<capsuleGroup.transform.childCount;i++)
         {
             capsuleGroup.transform.GetChild(i).GetComponent<Animator>().SetTrigger("isGameOver");
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.06f);
         }
 
         setting.GetComponent<Animator>().SetTrigger("Game_Over");
