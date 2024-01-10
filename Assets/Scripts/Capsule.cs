@@ -6,14 +6,12 @@ public class Capsule : MonoBehaviour
 {
     public CapsuleData capsuleData;
     public bool isMerged=false;
-    private bool isHit=false;
-
+    public bool isHit=false;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(!isHit&&other.gameObject.layer.Equals(0))
         {
-            Claw.Instance.isDragAvailable=true;
             UIManager.Instance.CalculateScore(capsuleData.CapsuleLevel+1);
             isHit=true;
         }

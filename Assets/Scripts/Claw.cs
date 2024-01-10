@@ -19,8 +19,7 @@ public class Claw : MonoBehaviour
     [SerializeField] private Transform right;
 
     private Animator clawAnimator;
-    public bool isDragAvailable;
-    
+   
     public static Claw Instance => instance;
     private static Claw instance;
 
@@ -35,8 +34,6 @@ public class Claw : MonoBehaviour
     void Start()
     {
         Create();
-
-        isDragAvailable=true;
         clawAnimator=transform.GetComponent<Animator>();  
         
     }
@@ -47,12 +44,14 @@ public class Claw : MonoBehaviour
             return;
         }
 
-        if(isDragAvailable&&!optionUI.activeSelf)
+        if (Input.GetMouseButton(0))
         {
-            if (Input.GetMouseButton(0))
-            {
-                Drag();
-            }
+            Drag();
+        }
+
+
+        if(IsDragAvailable())
+        {
 
             if (Input.GetMouseButtonUp(0))
             {
@@ -72,7 +71,7 @@ public class Claw : MonoBehaviour
 
         }
 
-        currentCapsule.SetActive(isDragAvailable);
+        currentCapsule.SetActive(IsDragAvailable());
 
     }
 
@@ -102,7 +101,6 @@ public class Claw : MonoBehaviour
         guide.SetActive(true);
     
         
-        
     }
 
 
@@ -119,8 +117,6 @@ public class Claw : MonoBehaviour
         currentCapsule=null;
 
         capsuleList.RemoveAt(0);
-        isDragAvailable=false;
-
         Create();
         
     }
@@ -139,6 +135,44 @@ public class Claw : MonoBehaviour
         Destroy(first.gameObject);
         Destroy(second.gameObject);
     }
+
+    public bool IsDragAvailable()
+    {
+        if(capsuleGroup.childCount>1)
+        {
+            for (int i=1;i<capsuleGroup.childCount-1;i++)
+            {
+                var item=capsuleGroup.GetChild(i).gameObject;
+                if(!item.activeSelf&&!item.Equals(currentCapsule))
+                {
+                    Destroy(item);
+                }
+
+                if(item.Equals(currentCapsule))
+                {
+                    continue;
+                }
+
+                else
+                {
+                    if (!item.GetComponent<Capsule>().isHit)
+                    {
+                        return false;
+                    }
+                    
+                }
+                
+            }
+        }
+
+        if(optionUI.activeSelf)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     
