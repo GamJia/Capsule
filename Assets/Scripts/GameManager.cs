@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject capsuleGroup;
     [SerializeField] private GameObject settingButton;
     [SerializeField] private GameObject setting;
+    [SerializeField] private Collider2D gameoverCollider;
+    private Coroutine gameoverCoroutine;
 
     
     void Awake()
@@ -20,8 +22,12 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        gameoverCollider.enabled=false;
         UIManager.Instance.UpdateScore();
-        StartCoroutine(GameOverAnimation());
+        if (gameoverCoroutine == null)
+        {
+            gameoverCoroutine = StartCoroutine(GameOverAnimation());
+        }
     }
 
     IEnumerator GameOverAnimation()

@@ -138,9 +138,9 @@ public class Claw : MonoBehaviour
 
     public bool IsDragAvailable()
     {
-        if(capsuleGroup.childCount>1)
+        if(capsuleGroup.childCount>0)
         {
-            for (int i=1;i<capsuleGroup.childCount-1;i++)
+            for (int i=0;i<capsuleGroup.childCount-1;i++)
             {
                 var item=capsuleGroup.GetChild(i).gameObject;
                 if(!item.activeSelf&&!item.Equals(currentCapsule))
@@ -160,6 +160,11 @@ public class Claw : MonoBehaviour
                         return false;
                     }
                     
+                }
+
+                if(item.GetComponent<Capsule>().touchTime>2.1f)
+                {
+                    return false;
                 }
                 
             }

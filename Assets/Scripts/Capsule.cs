@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Capsule : MonoBehaviour
 {
     public CapsuleData capsuleData;
+    public float touchTime;
     public bool isMerged=false;
     public bool isHit=false;
+
+    private void Start() {
+        touchTime=0;
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -40,6 +46,26 @@ public class Capsule : MonoBehaviour
             isMerged=true;
         }
         
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        touchTime+=Time.deltaTime;
+            
+        if(touchTime>0.5f)
+        {
+            GetComponent<Image>().color = new Color(1f, 136f / 255f, 136f / 255f);
+
+            if(touchTime>2.5f)
+            {
+                GameManager.Instance.GameOver();
+            }
+            
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        GetComponent<Image>().color = Color.white;
+        touchTime=0;
     }
 
     
