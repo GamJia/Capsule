@@ -21,6 +21,8 @@ public class AdmobManager : MonoBehaviour
 
     #if UNITY_ANDROID
         private string _adUnitId = "ca-app-pub-3940256099942544/6300978111";
+        //  Real ID
+        // private string _adUnitId = "ca-app-pub-9726670934205610/3558755417";
     #elif UNITY_IPHONE
         private string _adUnitId = "ca-app-pub-3940256099942544/2934735716";
     #else
