@@ -4570,7 +4570,7 @@ GameObject:
   - component: {fileID: 1866367730}
   - component: {fileID: 1866367729}
   m_Layer: 0
-  m_Name: Admob Manager
+  m_Name: "(\uC8FC\uC758) Admob Manager"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
