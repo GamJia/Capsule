@@ -4,181 +4,112 @@ using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.NiceVibrations;
 using UnityEngine.EventSystems;
-
 public class Claw : MonoBehaviour
 {
-    [SerializeField] private CapsuleStorage capsuleStorage;
+    public CapsuleStorage capsuleStorage;
+    private RectTransform rectTransform;
+    private Canvas canvas;
+    private bool isDragging = false;
+    private Vector2 dragStartPos;
     [SerializeField] private List<GameObject> capsuleList;
-    [SerializeField] private Text capsuleText;
-    [SerializeField] private GameObject guide;
-    [SerializeField] private GameObject currentCapsule;
-    [SerializeField] private Transform spawnPoint;
-    [SerializeField] private Transform capsuleGroup;
-    [SerializeField] private GameObject optionUI;
-    [SerializeField] private Transform left;
-    [SerializeField] private Transform right;
+    [SerializeField] private GameObject capsule;
+    [SerializeField] private GameObject left;
+    [SerializeField] private GameObject right;
 
-    private Animator clawAnimator;
-   
-    public static Claw Instance => instance;
-    private static Claw instance;
 
-    private void Awake() 
-    {
-        if (null == instance)
-        {
-            instance = this;
-        }
-    }
+
+    private const float MinX = -300f;
+    private const float MaxX = 300f;
 
     void Start()
     {
+        rectTransform = GetComponent<RectTransform>();
+        canvas = GetComponentInParent<Canvas>();
+
         Create();
-        clawAnimator=transform.GetComponent<Animator>();  
-        
     }
+
     void Update()
     {
-        if(EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetMouseButtonDown(0))
         {
-            return;
+            BeginDrag();
         }
 
-        if (Input.GetMouseButton(0))
+        if (isDragging)
         {
-            Drag();
-        }
-
-
-        if(IsDragAvailable())
-        {
-
-            if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButton(0))
             {
-                Drop();
+                OnDrag();
             }
-
-            if(!currentCapsule)
+            else if (Input.GetMouseButtonUp(0))
             {
-                currentCapsule=Instantiate(capsuleList[0],spawnPoint.position,Quaternion.identity,capsuleGroup);
-                currentCapsule.transform.GetComponent<Collider2D>().enabled=false;
-                currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=true;
-                
-
-                clawAnimator.SetTrigger(capsuleList[0].GetComponent<Capsule>().capsuleData.CapsuleName);
-                capsuleText.text = capsuleList[1].GetComponent<Capsule>().capsuleData.CapsuleName;
+                EndDrag();
             }
-
         }
+    }
 
-        currentCapsule.SetActive(IsDragAvailable());
+    private void BeginDrag()
+    {
+        Vector2 localPoint;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localPoint))
+        {
+            dragStartPos = localPoint;
+            if (dragStartPos.y < 0)
+            {
+                isDragging = true;
+            }
+        }
+    }
 
+    private void OnDrag()
+    {
+        Vector2 localPoint;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localPoint))
+        {
+            Vector3 newPosition = rectTransform.localPosition + (Vector3)(localPoint - dragStartPos);
+            newPosition.x = Mathf.Clamp(newPosition.x, MinX, MaxX);
+            rectTransform.localPosition = new Vector3(newPosition.x,762,0);
+        }
+    }
+
+    private void EndDrag()
+    {
+        isDragging = false;
+        if (capsule != null)
+        {
+            Rigidbody2D capsuleRigidbody = capsule.GetComponent<Rigidbody2D>();
+            if (capsuleRigidbody != null)
+            {
+                capsuleRigidbody.bodyType = RigidbodyType2D.Dynamic;
+            }
+        }
     }
 
 
-    void Create()
-    { 
+    private void Create()
+    {
         int currentIndex=2-capsuleList.Count;
 
         for(int i=0;i<currentIndex;i++)
         {
             capsuleList.Add(capsuleStorage.GetCapsule((CapsuleID)Random.Range(0, 5)));
         }
-        
-    }
 
-    void Drag()
-    {
-        Vector3 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        float clampedX = Mathf.Clamp(currentMousePosition.x, left.position.x,right.position.x);
-        transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
-
-        if(currentCapsule)
+        if (capsule==null)
         {
-            currentCapsule.transform.position = new Vector3(spawnPoint.transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z);
-        }
+            capsule = Instantiate(capsuleList[0], rectTransform);
+            RectTransform capsuleRectTransform = capsule.GetComponent<RectTransform>();
+            capsuleRectTransform.localPosition = new Vector3(0, -180, 0);
 
-        guide.SetActive(true);
-    
+            float rotationValue = (180 - capsuleRectTransform.rect.width) / 6;
+
+            left.transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
+            right.transform.localRotation = Quaternion.Euler(0, 0, -rotationValue);
+
+        }
         
     }
 
 
-    void Drop()
-    {
-        AudioManager.Instance.PlaySFX(AudioID.Drop);        
-
-        guide.SetActive(false);
-
-        currentCapsule.transform.SetParent(capsuleGroup);
-        currentCapsule.transform.GetComponent<Collider2D>().enabled=true;
-        currentCapsule.transform.GetComponent<Rigidbody2D>().isKinematic=false;
-
-        currentCapsule=null;
-
-        capsuleList.RemoveAt(0);
-        Create();
-        
-    }
-
-    public void Merge(Capsule first, Capsule second)
-    {
-        int nextLevel = first.capsuleData.CapsuleLevel + 1;
-        GameObject nextCapsule = capsuleStorage.GetCapsule((CapsuleID)nextLevel);
-        Vector3 mergePosition = (first.transform.position + second.transform.position) / 2f;
-        Instantiate(nextCapsule, mergePosition, Quaternion.identity,capsuleGroup);
-        
-        AudioManager.Instance.PlaySFX(AudioID.Merge);
-
-        MMVibrationManager.Vibrate();
-
-        Destroy(first.gameObject);
-        Destroy(second.gameObject);
-    }
-
-    public bool IsDragAvailable()
-    {
-        if(capsuleGroup.childCount>0)
-        {
-            for (int i=0;i<capsuleGroup.childCount-1;i++)
-            {
-                var item=capsuleGroup.GetChild(i).gameObject;
-                if(!item.activeSelf&&!item.Equals(currentCapsule))
-                {
-                    Destroy(item);
-                }
-
-                if(item.Equals(currentCapsule))
-                {
-                    continue;
-                }
-
-                else
-                {
-                    if (!item.GetComponent<Capsule>().isHit)
-                    {
-                        return false;
-                    }
-                    
-                }
-
-                if(item.GetComponent<Capsule>().touchTime>2.1f)
-                {
-                    return false;
-                }
-                
-            }
-        }
-
-        if(optionUI.activeSelf)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-
-
-    
 }
