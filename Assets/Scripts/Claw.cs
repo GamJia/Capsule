@@ -11,22 +11,23 @@ public class Claw : MonoBehaviour
     private Canvas canvas;
     private bool isDragging = false;
     private Vector2 dragStartPos;
-    [SerializeField] private List<GameObject> capsuleList;
-    [SerializeField] private GameObject capsule;
+    private GameObject capsule;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
+    [SerializeField] private Transform capsuleGroup;
+    [SerializeField] private List<GameObject> capsuleList;
 
 
 
-    private const float MinX = -300f;
-    private const float MaxX = 300f;
+    private const float MinX = -350f;
+    private const float MaxX = 350f;
 
     void Start()
     {
         rectTransform = GetComponent<RectTransform>();
         canvas = GetComponentInParent<Canvas>();
 
-        Create();
+        CreateCapsule();
     }
 
     void Update()
@@ -82,12 +83,24 @@ public class Claw : MonoBehaviour
             if (capsuleRigidbody != null)
             {
                 capsuleRigidbody.bodyType = RigidbodyType2D.Dynamic;
+                capsuleRigidbody.AddForce(new Vector2(0, -2000), ForceMode2D.Impulse);
             }
+
+            capsule.transform.SetParent(capsuleGroup);     
+
+            capsule=null;       
+            Invoke("UpdateCapsule", 1f);
         }
     }
 
+    private void UpdateCapsule()
+    {        
+        capsuleList.RemoveAt(0);
+        CreateCapsule();
+    }
 
-    private void Create()
+
+    private void CreateCapsule()
     {
         int currentIndex=2-capsuleList.Count;
 

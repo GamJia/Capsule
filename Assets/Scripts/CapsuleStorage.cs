@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using System;
 
 public enum CapsuleID
@@ -63,6 +64,21 @@ public class CapsuleStorage : ScriptableObject
             return null;
         }
     }
+
+    public GameObject GetNextCapsule(CapsuleID currentID)
+    {
+        for (int i = 0; i < capsuleArray.Length; i++)
+        {
+            if (capsuleArray[i].capsuleID == currentID)
+            {
+                int nextIndex = (i + 1) % capsuleArray.Length; 
+                return capsuleArray[nextIndex].capsule;
+            }
+        }
+        return null;
+    }
+
+    
 }
 
 [Serializable]

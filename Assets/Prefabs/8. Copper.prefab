@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3825123279922700227}
   - component: {fileID: 5991708414779971158}
   - component: {fileID: 4143094899330781961}
+  - component: {fileID: 6797829155434390450}
   m_Layer: 0
   m_Name: 8. Copper
   m_TagString: Untagged
@@ -80,7 +81,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 304488946225614186}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3f4af0d2ad4816742acea33147887ee4, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -102,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.1
-  m_GravityScale: 500
+  m_GravityScale: 100
   m_Material: {fileID: 0}
   m_Interpolate: 1
   m_SleepingMode: 0
@@ -137,3 +138,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6797829155434390450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304488946225614186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b72cf342d58319041bdc58344cd47d03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capsuleID: 8
+  isMerged: 0
