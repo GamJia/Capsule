@@ -32,24 +32,27 @@ public class CapsuleManager : MonoBehaviour
     {
         CapsuleID firstID = firstCapsule.capsuleID;
 
-        GameObject nextCapsulePrefab = capsuleStorage.GetNextCapsule(firstID);
-        if (nextCapsulePrefab == null)
+        CapsuleData? nextCapsuleData = capsuleStorage.GetCapsuleData((CapsuleID)((int)firstID + 1));
+        if (nextCapsuleData.HasValue)
         {
-            Debug.LogError("Next capsule prefab not found.");
-            return;
+            GameObject nextCapsulePrefab = nextCapsuleData.Value.capsule;
+            int nextCapsuleScore = nextCapsuleData.Value.capsuleScore;
+            UIManager.Instance.UpdateScore(nextCapsuleScore);
+
+            Vector3 mergePosition = (firstCapsule.transform.position + secondCapsule.transform.position) / 2f;
+            GameObject nextCapsule = Instantiate(nextCapsulePrefab, mergePosition, Quaternion.identity, this.gameObject.transform);
+
+            nextCapsule.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
+            //AudioManager.Instance.PlaySFX(AudioID.Merge);
+            //MMVibrationManager.Vibrate();
+
+            Destroy(firstCapsule.gameObject);
+            Destroy(secondCapsule.gameObject);
         }
-
-        Vector3 mergePosition = (firstCapsule.transform.position + secondCapsule.transform.position) / 2f;
-        GameObject nextCapsule=Instantiate(nextCapsulePrefab, mergePosition, Quaternion.identity,this.gameObject.transform);
-
-        nextCapsule.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-        
-        //AudioManager.Instance.PlaySFX(AudioID.Merge);
-
-        //MMVibrationManager.Vibrate();
-
-        Destroy(firstCapsule.gameObject);
-        Destroy(secondCapsule.gameObject);
+        else
+        {
+            Debug.LogError("Next capsule data not found.");
+        }
     }
-
 }

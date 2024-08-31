@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using System;
 
 public enum CapsuleID
@@ -24,69 +23,93 @@ public class CapsuleStorage : ScriptableObject
 {
     public static CapsuleStorage Instance => instance;
     private static CapsuleStorage instance;
+
     void Awake()
     {
-        if (null == instance)
+        if (instance == null)
         {
             instance = this;
         }
-
-        GenerateDictionary(); 
-        
     }
-    [SerializeField] CapsuleArray[] capsuleArray;
 
-    Dictionary<CapsuleID, GameObject> capsuleDictionary = new Dictionary<CapsuleID, GameObject>();
+    [SerializeField] private CapsuleArray[] capsuleArray; 
 
-    void GenerateDictionary()
+    private Dictionary<CapsuleID, CapsuleData> capsuleDictionary = new Dictionary<CapsuleID, CapsuleData>();
+
+    void OnEnable()
     {
+        GenerateDictionary();
+    }
+
+    private void GenerateDictionary()
+    {
+        capsuleDictionary.Clear(); 
+
         for (int i = 0; i < capsuleArray.Length; i++)
         {
-            capsuleDictionary.Add(capsuleArray[i].capsuleID, capsuleArray[i].capsule);
-        }
-    }
-
-    public GameObject GetCapsule(CapsuleID id)
-    {
-        Debug.Assert(capsuleArray.Length > 0, "No Capsule!!");
-
-        if (capsuleDictionary.Count.Equals(0))
-        {
-            GenerateDictionary();
-        }
-
-        if (capsuleDictionary.ContainsKey(id))
-        {
-            return capsuleDictionary[id];
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public GameObject GetNextCapsule(CapsuleID currentID)
-    {
-        for (int i = 0; i < capsuleArray.Length; i++)
-        {
-            if (capsuleArray[i].capsuleID == currentID)
+            CapsuleData data = new CapsuleData
             {
-                int nextIndex = (i + 1) % capsuleArray.Length; 
-                return capsuleArray[nextIndex].capsule;
-            }
+                capsule = capsuleArray[i].capsuleData.capsule,
+                capsuleScore = capsuleArray[i].capsuleData.capsuleScore
+            };
+            capsuleDictionary.Add(capsuleArray[i].capsuleID, data);
+        }
+    }
+
+    public CapsuleData? GetCapsuleData(CapsuleID id)
+    {
+        if (capsuleDictionary.TryGetValue(id, out CapsuleData data))
+        {
+            return data;
         }
         return null;
     }
 
-    
+    public GameObject GetCapsule(CapsuleID id)
+    {
+        if (capsuleDictionary.TryGetValue(id, out CapsuleData data))
+        {
+            return data.capsule;
+        }
+        return null;
+    }
+
+    public GameObject GetNextCapsule(CapsuleID currentID)
+    {
+        int index = Array.FindIndex(capsuleArray, data => data.capsuleID == currentID);
+        if (index == -1 || index + 1 >= capsuleArray.Length)
+        {
+            return null;
+        }
+        return capsuleArray[(index + 1) % capsuleArray.Length].capsuleData.capsule;
+    }
 }
+
+[Serializable]
+public struct CapsuleData
+{
+    [SerializeField] private GameObject _capsule;
+    [SerializeField] private int _capsuleScore;
+
+    public GameObject capsule
+    {
+        get { return _capsule; }
+        set { _capsule = value; }
+    }
+    public int capsuleScore
+    {
+        get { return _capsuleScore; }
+        set { _capsuleScore = value; } 
+    }
+}
+
 
 [Serializable]
 public struct CapsuleArray
 {
-    [SerializeField] GameObject _capsule;
-    [SerializeField] CapsuleID _capsuleID;
+    [SerializeField] private CapsuleID _capsuleID;
+    [SerializeField] private CapsuleData _capsuleData;
 
-    public GameObject capsule { get { return _capsule; } }
     public CapsuleID capsuleID { get { return _capsuleID; } }
+    public CapsuleData capsuleData { get { return _capsuleData; } }
 }

@@ -98,18 +98,29 @@ public class Claw : MonoBehaviour
         capsuleList.RemoveAt(0);
         CreateCapsule();
     }
+    
+    
 
 
     private void CreateCapsule()
     {
-        int currentIndex=2-capsuleList.Count;
+        int currentIndex = 2 - capsuleList.Count;
 
-        for(int i=0;i<currentIndex;i++)
+        for (int i = 0; i < currentIndex; i++)
         {
-            capsuleList.Add(capsuleStorage.GetCapsule((CapsuleID)Random.Range(0, 5)));
+            int randomID = Random.Range(0, 5);
+            CapsuleID capsuleID = (CapsuleID)randomID;            
+            CapsuleData? capsuleData = capsuleStorage.GetCapsuleData(capsuleID);
+            
+            if (capsuleData.HasValue)
+            {
+                capsuleList.Add(capsuleData.Value.capsule);
+                UIManager.Instance.UpdateCapsuleText((int)capsuleID);
+            }
+           
         }
 
-        if (capsule==null)
+        if (capsule == null && capsuleList.Count > 0)
         {
             capsule = Instantiate(capsuleList[0], rectTransform);
             RectTransform capsuleRectTransform = capsule.GetComponent<RectTransform>();
@@ -119,9 +130,7 @@ public class Claw : MonoBehaviour
 
             left.transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
             right.transform.localRotation = Quaternion.Euler(0, 0, -rotationValue);
-
         }
-        
     }
 
 
