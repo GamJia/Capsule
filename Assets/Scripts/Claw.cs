@@ -30,27 +30,27 @@ public class Claw : MonoBehaviour
         CreateCapsule();
     }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            BeginDrag();
-        }
+    // void Update()
+    // {
+    //     if (Input.GetMouseButtonDown(0))
+    //     {
+    //         BeginDrag();
+    //     }
 
-        if (isDragging)
-        {
-            if (Input.GetMouseButton(0))
-            {
-                OnDrag();
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                EndDrag();
-            }
-        }
-    }
+    //     if (isDragging)
+    //     {
+    //         if (Input.GetMouseButton(0))
+    //         {
+    //             OnDrag();
+    //         }
+    //         else if (Input.GetMouseButtonUp(0))
+    //         {
+    //             EndDrag();
+    //         }
+    //     }
+    // }
 
-    private void BeginDrag()
+    public void BeginDrag()
     {
         Vector2 localPoint;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localPoint))
@@ -63,8 +63,13 @@ public class Claw : MonoBehaviour
         }
     }
 
-    private void OnDrag()
+    public void OnDrag()
     {
+        if(!isDragging)
+        {
+            return;
+        }
+
         Vector2 localPoint;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, Input.mousePosition, null, out localPoint))
         {
@@ -74,8 +79,13 @@ public class Claw : MonoBehaviour
         }
     }
 
-    private void EndDrag()
+    public void EndDrag()
     {
+        if(!isDragging)
+        {
+            return;
+        }
+
         isDragging = false;
         if (capsule != null)
         {
@@ -98,9 +108,7 @@ public class Claw : MonoBehaviour
         capsuleList.RemoveAt(0);
         CreateCapsule();
     }
-    
-    
-
+ 
 
     private void CreateCapsule()
     {
@@ -131,6 +139,19 @@ public class Claw : MonoBehaviour
             left.transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
             right.transform.localRotation = Quaternion.Euler(0, 0, -rotationValue);
         }
+    }
+
+    public void DestroyCapsule()
+    {
+        if(capsule)
+        {
+            Destroy(capsule);
+        }
+
+        float rotationValue = 30;
+
+        left.transform.localRotation = Quaternion.Euler(0, 0, rotationValue);
+        right.transform.localRotation = Quaternion.Euler(0, 0, -rotationValue);
     }
 
 

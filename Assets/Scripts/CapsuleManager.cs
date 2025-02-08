@@ -7,6 +7,7 @@ public class CapsuleManager : MonoBehaviour
     public static CapsuleManager Instance => instance;
     private static CapsuleManager instance;
     public CapsuleStorage capsuleStorage;
+
     
     private void Awake()
     {
@@ -55,4 +56,6 @@ public class CapsuleManager : MonoBehaviour
             Debug.LogError("Next capsule data not found.");
         }
     }
+
+    
 }

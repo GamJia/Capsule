@@ -38,8 +38,12 @@ public class Capsule : MonoBehaviour
 
             if (capsuleID == otherCapsule.capsuleID)
             {
-                CapsuleManager.Instance.Merge(this,otherCapsule);
-                isMerged=true;
+                if(CapsuleManager.Instance)
+                {
+                    CapsuleManager.Instance.Merge(this,otherCapsule);
+                    isMerged=true;
+                }
+                
 
             }
         }

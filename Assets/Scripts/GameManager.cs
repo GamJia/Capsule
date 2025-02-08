@@ -27,4 +27,16 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void GameOver()
+    {
+        ClawManager.Instance.EnableTouchEvents(false);
+        Animator animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.SetTrigger("isGameOver");
+        }
+
+    }
+
 }
