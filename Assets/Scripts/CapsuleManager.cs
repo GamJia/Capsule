@@ -8,29 +8,34 @@ public class CapsuleManager : MonoBehaviour
     private static CapsuleManager instance;
     public CapsuleStorage capsuleStorage;
 
-    
+
     private void Awake()
     {
         if (null == instance)
         {
             instance = this;
         }
-        
+
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Merge(Capsule firstCapsule, Capsule secondCapsule)
     {
+        if (GameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         CapsuleID firstID = firstCapsule.capsuleID;
 
         CapsuleData? nextCapsuleData = capsuleStorage.GetCapsuleData((CapsuleID)((int)firstID + 1));
@@ -45,15 +50,39 @@ public class CapsuleManager : MonoBehaviour
 
             nextCapsule.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-            //AudioManager.Instance.PlaySFX(AudioID.Merge);
+            AudioManager.Instance.PlaySFX(AudioID.Merge);
             //MMVibrationManager.Vibrate();
 
             Destroy(firstCapsule.gameObject);
             Destroy(secondCapsule.gameObject);
+
         }
         else
         {
             Debug.LogError("Next capsule data not found.");
+        }
+    }
+
+    public void GameOver()
+    {
+        StartCoroutine(GameOverCoroutine());
+    }
+
+    private IEnumerator GameOverCoroutine()
+    {
+        if (this.transform.childCount == 0) yield break;
+
+        float interval = 1.2f / this.transform.childCount;
+
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            Animator animator = this.transform.GetChild(i).GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.SetTrigger("isDead");
+            }
+
+            yield return new WaitForSeconds(interval);
         }
     }
 

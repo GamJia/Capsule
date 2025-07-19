@@ -7,9 +7,10 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance => instance;
     private static UIManager instance;
-    private int score=0;
+    private int score = 0;
     [SerializeField] Text capsuleText;
     [SerializeField] Text scoreText;
+    [SerializeField] Text countDownText;
 
 
     private void Awake()
@@ -18,25 +19,25 @@ public class UIManager : MonoBehaviour
         {
             instance = this;
         }
-        
+
     }
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void UpdateCapsuleText(int capsuleID)
     {
-        switch(capsuleID)
+        switch (capsuleID)
         {
             case 0:
                 capsuleText.text = "Red";
@@ -62,7 +63,21 @@ public class UIManager : MonoBehaviour
     public void UpdateScore(int addScore)
     {
         score += addScore;
-        scoreText.text = score.ToString("D3"); 
+        scoreText.text = score.ToString("D3");
+    }
+
+    public void UpdateCountDown(int timer, bool isActive)
+    {
+        countDownText.gameObject.SetActive(isActive);
+
+        if (isActive)
+        {
+            countDownText.text = timer.ToString();
+            if (timer < 1)
+            {
+                capsuleText.text = "Game Over!";
+            }
+        }
     }
 
 

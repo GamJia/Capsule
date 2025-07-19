@@ -14,13 +14,13 @@ public class Claw : MonoBehaviour
     private GameObject capsule;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
-    [SerializeField] private Transform capsuleGroup;
+    // [SerializeField] private Transform capsuleGroup;
     [SerializeField] private List<GameObject> capsuleList;
 
 
 
-    private const float MinX = -350f;
-    private const float MaxX = 350f;
+    private const float MinX = -450f;
+    private const float MaxX = 450f;
 
     void Start()
     {
@@ -96,10 +96,12 @@ public class Claw : MonoBehaviour
                 capsuleRigidbody.AddForce(new Vector2(0, -2000), ForceMode2D.Impulse);
             }
 
-            capsule.transform.SetParent(capsuleGroup);     
+            capsule.transform.SetParent(CapsuleManager.Instance.gameObject.transform);
 
-            capsule=null;       
+            capsule = null;
             Invoke("UpdateCapsule", 1f);
+            
+            AudioManager.Instance.PlaySFX(AudioID.Drop);
         }
     }
 
