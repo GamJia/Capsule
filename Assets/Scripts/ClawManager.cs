@@ -26,7 +26,12 @@ public class ClawManager : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void EnableTouchEvents(bool enable)
     {
         touchEnabled = enable;
-        if(!enable)
+        if (enable)
+        {
+            claw.CreateCapsule(true);
+        }
+        
+        else
         {
             claw.DestroyCapsule();
         }

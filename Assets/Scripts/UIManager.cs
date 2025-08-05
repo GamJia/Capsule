@@ -37,6 +37,11 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCapsuleText(int capsuleID)
     {
+        if (GameManager.Instance.isGameOver)
+        {
+            return;
+        }
+
         switch (capsuleID)
         {
             case 0:
@@ -78,6 +83,8 @@ public class UIManager : MonoBehaviour
                 capsuleText.text = "Game Over!";
             }
         }
+
+        
     }
 
 

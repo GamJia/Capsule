@@ -14,6 +14,8 @@ public class Claw : MonoBehaviour
     private GameObject capsule;
     [SerializeField] private GameObject left;
     [SerializeField] private GameObject right;
+
+    [SerializeField] private GameObject handle;
     // [SerializeField] private Transform capsuleGroup;
     [SerializeField] private List<GameObject> capsuleList;
 
@@ -75,7 +77,11 @@ public class Claw : MonoBehaviour
         {
             Vector3 newPosition = rectTransform.localPosition + (Vector3)(localPoint - dragStartPos);
             newPosition.x = Mathf.Clamp(newPosition.x, MinX, MaxX);
-            rectTransform.localPosition = new Vector3(newPosition.x,762,0);
+            rectTransform.localPosition = new Vector3(newPosition.x, 762, 0);
+            
+            float t = Mathf.InverseLerp(MinX, MaxX, newPosition.x);  // 0~1 사이로 정규화
+            float zRotation = Mathf.Lerp(20f, -20f, t);              // -20 ~ 20 사이 보간
+            handle.transform.localEulerAngles = new Vector3(0, 0, zRotation);
         }
     }
 
@@ -112,8 +118,12 @@ public class Claw : MonoBehaviour
     }
  
 
-    private void CreateCapsule()
+    public void CreateCapsule(bool isReset = false)
     {
+        if (isReset)
+        {
+            capsuleList.Clear();
+        }
         int currentIndex = 2 - capsuleList.Count;
 
         for (int i = 0; i < currentIndex; i++)

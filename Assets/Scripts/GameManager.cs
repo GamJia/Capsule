@@ -8,10 +8,10 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     private Animator animator;
-    public List<GameObject> capsuleList = new List<GameObject>();    
+    public List<GameObject> capsuleList = new List<GameObject>();
     private Coroutine timerCoroutine;
     public bool isGameOver = false;
-    
+
     private void Awake()
     {
         if (null == instance)
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -38,12 +38,12 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCapsule(GameObject capsule, bool isEnter)
     {
-        
+
         if (isEnter)
         {
             if (!capsuleList.Contains(capsule))
             {
-                capsuleList.Add(capsule);        
+                capsuleList.Add(capsule);
 
                 if (timerCoroutine == null)
                 {
@@ -101,13 +101,26 @@ public class GameManager : MonoBehaviour
             isGameOver = true;
 
             ClawManager.Instance.EnableTouchEvents(false);
-            UIManager.Instance.UpdateCountDown(0,false);
+            UIManager.Instance.UpdateCountDown(0, false);
             CapsuleManager.Instance.GameOver();
 
             if (animator != null)
             {
                 animator.SetTrigger("isGameOver");
             }
+        }
+    }
+
+    public void Reset()
+    {
+        isGameOver = false;
+
+        ClawManager.Instance.EnableTouchEvents(true);
+        CapsuleManager.Instance.Reset();
+
+        if (animator != null)
+        {
+            animator.SetTrigger("isReset");
         }
     }
 
