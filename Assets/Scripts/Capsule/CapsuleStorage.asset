@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c151791ccf429f24495969b699ee4cfe, type: 3}
+  m_Name: CapsuleStorage
+  m_EditorClassIdentifier: 
+  capsuleArray:
+  - _capsuleID: 0
+    _capsuleData:
+      _capsule: {fileID: 1909064013154040475, guid: e85a9579037e91e4bb09f60fc4fd0a1e, type: 3}
+      _capsuleScore: 1
+  - _capsuleID: 1
+    _capsuleData:
+      _capsule: {fileID: 910319014597319235, guid: 22637d4b99803b648acd66cde575bcc3, type: 3}
+      _capsuleScore: 3
+  - _capsuleID: 2
+    _capsuleData:
+      _capsule: {fileID: 2135574353818622065, guid: c06bd69f87daa7d4c8fb2681272bc7ec, type: 3}
+      _capsuleScore: 6
+  - _capsuleID: 3
+    _capsuleData:
+      _capsule: {fileID: 8790162531487289558, guid: fdba7e75942dc82449385a2654f8f49c, type: 3}
+      _capsuleScore: 10
+  - _capsuleID: 4
+    _capsuleData:
+      _capsule: {fileID: 8510005132923562456, guid: 2b2a459bd9b84514396daa46b4563ba5, type: 3}
+      _capsuleScore: 15
+  - _capsuleID: 5
+    _capsuleData:
+      _capsule: {fileID: 9121219077063139492, guid: a28ff3fa43e1fdc479eef20d9563ad02, type: 3}
+      _capsuleScore: 21
+  - _capsuleID: 6
+    _capsuleData:
+      _capsule: {fileID: 4905671154761686195, guid: c1c8bc241c1c0124e9fbba4fa300626c, type: 3}
+      _capsuleScore: 28
+  - _capsuleID: 7
+    _capsuleData:
+      _capsule: {fileID: 5152881090175117498, guid: 64ffd977d432c9241b066244ce8fb3f4, type: 3}
+      _capsuleScore: 36
+  - _capsuleID: 8
+    _capsuleData:
+      _capsule: {fileID: 304488946225614186, guid: 0513ddba3db8ff944a1fc51861c67321, type: 3}
+      _capsuleScore: 45
+  - _capsuleID: 9
+    _capsuleData:
+      _capsule: {fileID: 6498052742532262443, guid: d5b0b1ea1e6487e4181000d65911488b, type: 3}
+      _capsuleScore: 55
+  - _capsuleID: 10
+    _capsuleData:
+      _capsule: {fileID: 3741317296850575098, guid: 999a2ff69079b7042b2bcf82e8c7a7c5, type: 3}
+      _capsuleScore: 66
